@@ -42,4 +42,4 @@ membershipSchema.index({ user: 1, workspace: 1 }, { unique: true });
 // Find members of a particular workspace.
 membershipSchema.index({ workspace: 1, status: 1 });
 
-const Membership = mongoose.model("Membership", membershipSchema);
+const Membership = mongoose.model("Membership", membershipSchema); 

@@ -63,3 +63,4 @@ projectSchema.index({
 const Project = mongoose.model("Project", projectSchema)
 
 export default Project;
+

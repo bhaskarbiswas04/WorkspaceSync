@@ -6,6 +6,7 @@ import morgan from "morgan";
 
 import authRoutes from "./modules/auth/auth.routes.js";
 import userRoutes from "./modules/user/user.routes.js";
+
 import errorMiddleware from "./middleware/error.middleware.js";
 
 const app = express();
@@ -19,29 +20,32 @@ app.use(
   }),
 );
 
-// Health check
+//Body parsing should must happen before routes.
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+app.use(morgan("dev"));
+
 app.get("/api/v1/health", (req, res) => {
   res.status(200).json({
     success: true,
     message: "WorkSpace API is running!",
-    timestamp: new Date().toISOString(),
   });
 });
 
-// Authentication Routes
+// API routes
 app.use("/api/v1/auth", authRoutes);
-
-// User Routes
 app.use("/api/v1/users", userRoutes);
 
-// Handle unknown endpoints.
+// 404 handler
 app.use((req, res, next) => {
   const error = new Error(`Route not found: ${req.originalUrl}`);
   error.statusCode = 404;
   next(error);
 });
 
-// Centralized error handling.
+// Error handler.
 app.use(errorMiddleware);
 
 export default app;

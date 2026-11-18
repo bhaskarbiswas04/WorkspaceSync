@@ -52,7 +52,7 @@ router.post(
   "/:workspaceId/invitations",
   requireWorkspaceMembership,
   requireWorkspaceRole("owner", "admin", "manager"),
-  validate(createInvitationSchema),
+  validate(createInvitationSchema), 
   createInvitationController,
 );
 

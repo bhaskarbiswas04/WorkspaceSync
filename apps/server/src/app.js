@@ -6,6 +6,8 @@ import morgan from "morgan";
 
 import authRoutes from "./modules/auth/auth.routes.js";
 import userRoutes from "./modules/user/user.routes.js";
+import workspaceRoutes from "./modules/workspace/workspace.routes.js";
+import invitationRoutes from "./modules/invitation/invitation.routes.js";
 
 import errorMiddleware from "./middleware/error.middleware.js";
 
@@ -37,6 +39,8 @@ app.get("/api/v1/health", (req, res) => {
 // API routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/workspaces", workspaceRoutes);
+app.use("/api/v1/invitations", invitationRoutes);
 
 // 404 handler
 app.use((req, res, next) => {

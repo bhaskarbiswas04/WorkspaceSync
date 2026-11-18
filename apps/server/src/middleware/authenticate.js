@@ -23,8 +23,17 @@ const authenticate = asyncHandler(async (req, res, next) => {
     throw new AppError("Invalid or expired access token", 401);
   }
 
+  const User = (await import("../modules/user/user.model.js")).default;
+
+  const user = await User.findById(decoded.sub);
+
+  if (!user || !user.isActive) {
+    throw new AppError("User account unavailable", 401);
+  }
+
   req.user = {
-    id: decoded.sub,
+    id: user._id.toString(),
+    email: user.email,
   };
 
   next();

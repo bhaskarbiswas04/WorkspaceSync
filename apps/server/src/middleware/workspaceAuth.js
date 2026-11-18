@@ -1,4 +1,3 @@
-
 import mongoose from "mongoose";
 
 import Membership from "../modules/workspace/membership.model.js";

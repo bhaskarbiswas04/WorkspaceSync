@@ -43,3 +43,5 @@ membershipSchema.index({ user: 1, workspace: 1 }, { unique: true });
 membershipSchema.index({ workspace: 1, status: 1 });
 
 const Membership = mongoose.model("Membership", membershipSchema);
+
+export default Membership;

@@ -53,7 +53,7 @@ router.post(
   requireWorkspaceMembership,
   requireWorkspaceRole("owner", "admin", "manager"),
   validate(createInvitationSchema),
-  createInvitationController,
+  createInvitationController, 
 );
 
 // List members.

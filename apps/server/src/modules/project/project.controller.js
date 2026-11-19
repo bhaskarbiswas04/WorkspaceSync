@@ -22,7 +22,8 @@ export const createProjectController = asyncHandler(async (req, res) => {
   });
 });
 
-// This is just a random comment, might delete later
+// This is just a random comment, might delete later. Ok let me push the code one more time in the git
+// then I will delete. For sure ok babe
 
 export const getProjectsController = asyncHandler(async (req, res) => {
   const result = await getWorkspaceProjects(

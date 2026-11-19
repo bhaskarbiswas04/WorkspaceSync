@@ -1,18 +1,23 @@
-import AppError from "../utils/AppError.js";
 
-const validate = (schema) => {
+const validate = (schema, source = "body") => {
   return (req, res, next) => {
-    const result = schema.safeParse(req.body);
+    const result = schema.safeParse(req[source]);
 
     if (!result.success) {
-      const message = result.error.issues
-        .map((issue) => issue.message)
-        .join(", ");
-
-      return next(new AppError(message, 400));
+      return res.status(400).json({
+        success: false,
+        message: "Validation failed",
+        errors: result.error.flatten(),
+      });
     }
 
-    req.body = result.data;
+    // Store validated data separately.
+    // Never overwrite req.query in Express 5.
+    if (source === "query") {
+      req.validatedQuery = result.data;
+    } else {
+      req[source] = result.data;
+    }
 
     next();
   };

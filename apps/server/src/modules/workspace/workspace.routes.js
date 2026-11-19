@@ -81,5 +81,3 @@ router.delete(
 );
 
 export default router;
-
-// wE ARE 

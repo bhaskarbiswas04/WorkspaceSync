@@ -22,8 +22,6 @@ export const createProjectController = asyncHandler(async (req, res) => {
   });
 });
 
-// Just a dummy comment 
-
 export const getProjectsController = asyncHandler(async (req, res) => {
   const result = await getWorkspaceProjects(
     req.params.workspaceId,

@@ -22,7 +22,7 @@ export const createProjectController = asyncHandler(async (req, res) => {
   });
 });
 
-// We are the inclinational society and get the records of the insider the
+// We are the inclinational society and get the records
 
 export const getProjectsController = asyncHandler(async (req, res) => {
   const result = await getWorkspaceProjects(

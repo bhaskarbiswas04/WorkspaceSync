@@ -22,6 +22,8 @@ export const createProjectController = asyncHandler(async (req, res) => {
   });
 });
 
+// we are the inclinational society
+
 export const getProjectsController = asyncHandler(async (req, res) => {
   const result = await getWorkspaceProjects(
     req.params.workspaceId,

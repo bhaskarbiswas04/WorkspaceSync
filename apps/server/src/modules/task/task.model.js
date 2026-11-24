@@ -67,6 +67,11 @@ const taskSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+
+    deletedAt: {
+      type: Date,
+      default: null,
+    },
   },
   {
     timestamps: true,
@@ -95,5 +100,3 @@ taskSchema.index({
 const Task = mongoose.model("Task", taskSchema);
 
 export default Task;
-
-// al society and get the records of the inclinationals of the resources and get the records of the insider

@@ -9,6 +9,7 @@ import userRoutes from "./modules/user/user.routes.js";
 import projectRoutes from "./modules/project/project.routes.js";
 import workspaceRoutes from "./modules/workspace/workspace.routes.js";
 import invitationRoutes from "./modules/invitation/invitation.routes.js";
+import taskRoutes from "./modules/task/task.routes.js";
 
 import errorMiddleware from "./middleware/error.middleware.js";
 
@@ -43,6 +44,7 @@ app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/workspaces", workspaceRoutes);
 app.use("/api/v1/invitations", invitationRoutes);
 app.use("/api/v1/workspaces/:workspaceId/projects", projectRoutes);
+app.use("/api/v1/workspaces/:workspaceId/projects/:projectId/tasks", taskRoutes);
 
 // 404 handler
 app.use((req, res, next) => {

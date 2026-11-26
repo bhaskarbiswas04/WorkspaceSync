@@ -13,9 +13,7 @@ import {
 
 import asyncHandler from "../../utils/asyncHandler.js";
 
-/* =====================================================
-   1. CREATE TASK
-===================================================== */
+/* 1. CREATE TASK */
 
 export const createTaskController = asyncHandler(async (req, res) => {
   const task = await createTask(
@@ -32,9 +30,7 @@ export const createTaskController = asyncHandler(async (req, res) => {
   });
 });
 
-/* =====================================================
-   2. GET ALL PROJECT TASKS
-===================================================== */
+/* 2. GET ALL PROJECT TASKS */
 
 export const getProjectTasksController = asyncHandler(async (req, res) => {
   const result = await getProjectTasks(
@@ -49,9 +45,7 @@ export const getProjectTasksController = asyncHandler(async (req, res) => {
   });
 });
 
-/* =====================================================
-   3. GET SINGLE TASK
-===================================================== */
+/* 3. GET SINGLE TASK */
 
 export const getTaskController = asyncHandler(async (req, res) => {
   const task = await getTaskById(
@@ -66,9 +60,7 @@ export const getTaskController = asyncHandler(async (req, res) => {
   });
 });
 
-/* =====================================================
-   4. UPDATE TASK DETAILS
-===================================================== */
+/* 4. UPDATE TASK DETAILS */
 
 export const updateTaskController = asyncHandler(async (req, res) => {
   const task = await updateTask(
@@ -85,9 +77,7 @@ export const updateTaskController = asyncHandler(async (req, res) => {
   });
 });
 
-/* =====================================================
-   5. UPDATE TASK STATUS
-===================================================== */
+/* 5. UPDATE TASK STATUS */
 
 export const updateTaskStatusController = asyncHandler(async (req, res) => {
   const task = await updateTaskStatus(
@@ -104,9 +94,7 @@ export const updateTaskStatusController = asyncHandler(async (req, res) => {
   });
 });
 
-/* =====================================================
-   6. UPDATE TASK PRIORITY
-===================================================== */
+/* 6. UPDATE TASK PRIORITY */
 
 export const updateTaskPriorityController = asyncHandler(async (req, res) => {
   const task = await updateTaskPriority(
@@ -123,9 +111,7 @@ export const updateTaskPriorityController = asyncHandler(async (req, res) => {
   });
 });
 
-/* =====================================================
-   7. REPLACE TASK ASSIGNEES
-===================================================== */
+/* 7. REPLACE TASK ASSIGNEES */
 
 export const assignUsersController = asyncHandler(async (req, res) => {
   const task = await assignUsers(
@@ -142,9 +128,7 @@ export const assignUsersController = asyncHandler(async (req, res) => {
   });
 });
 
-/* =====================================================
-   8. ADD TASK ASSIGNEES
-===================================================== */
+/* 8. ADD TASK ASSIGNEES */
 
 export const addAssigneesController = asyncHandler(async (req, res) => {
   const task = await addAssignees(
@@ -161,9 +145,7 @@ export const addAssigneesController = asyncHandler(async (req, res) => {
   });
 });
 
-/* =====================================================
-   9. REMOVE TASK ASSIGNEE
-===================================================== */
+/* 9. REMOVE TASK ASSIGNEE */
 
 export const removeAssigneeController = asyncHandler(async (req, res) => {
   const task = await removeAssignee(
@@ -180,9 +162,7 @@ export const removeAssigneeController = asyncHandler(async (req, res) => {
   });
 });
 
-/* =====================================================
-   10. ARCHIVE TASK
-===================================================== */
+/* 10. ARCHIVE TASK */
 
 export const archiveTaskController = asyncHandler(async (req, res) => {
   const task = await archiveTask(

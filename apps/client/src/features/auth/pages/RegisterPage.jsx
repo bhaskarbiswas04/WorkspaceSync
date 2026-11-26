@@ -112,6 +112,6 @@ function RegisterPage() {
   );
 }
 
-// bdkvjsdkvsd we are hre. This is the demo comment, might delete later.
+// bdkvjsdkvsd we are hre. 
 
 export default RegisterPage;

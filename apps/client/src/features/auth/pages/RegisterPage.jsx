@@ -113,5 +113,3 @@ function RegisterPage() {
 }
 
 export default RegisterPage;
-
-//What are the main sources and get the records of the insider in collaboration of the inclinational society

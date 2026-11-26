@@ -112,6 +112,4 @@ function RegisterPage() {
   );
 }
 
-// bdkvjsdkvsd we are hre. 
-
 export default RegisterPage;

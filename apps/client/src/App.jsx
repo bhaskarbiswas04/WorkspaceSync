@@ -1,15 +1,14 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 
-function LoginPage() {
-  return <div>Login Page – Coming Soon</div>;
-}
+import LoginPage from "./features/auth/pages/LoginPage";
+import RegisterPage from "./features/auth/pages/RegisterPage";
 
-function RegisterPage() {
-  return <div>Register Page – Coming Soon</div>;
+function DashboardPlaceholder() {
+  return <div className="p-10">Dashboard implementation coming next.</div>;
 }
 
 function NotFoundPage() {
-  return <div>404 – Page Not Found</div>;
+  return <div className="p-10">404 – Page Not Found</div>;
 }
 
 function App() {
@@ -18,6 +17,7 @@ function App() {
       <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/dashboard" element={<DashboardPlaceholder />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

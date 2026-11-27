@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { useAppDispatch } from "./hooks/useAppDispatch";
-import { initializeAuth } from "./features/auth/authSlice";
+import { initializeAuth, resetAuth } from "./features/auth/authSlice";
+import { setAuthenticationFailureHandler } from "./services/api";
 
 import LoginPage from "./features/auth/pages/LoginPage";
 import RegisterPage from "./features/auth/pages/RegisterPage";
@@ -22,6 +23,10 @@ function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    setAuthenticationFailureHandler(() => {
+      dispatch(resetAuth());
+    });
+
     dispatch(initializeAuth());
   }, [dispatch]);
 

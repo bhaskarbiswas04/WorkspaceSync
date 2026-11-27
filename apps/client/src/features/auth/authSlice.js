@@ -81,13 +81,28 @@ export const fetchCurrentUser = createAsyncThunk(
   },
 );
 
+// Restore session on application startup
+export const initializeAuth = createAsyncThunk(
+  "auth/initialize",
+  async (_, { dispatch, rejectWithValue }) => {
+    try {
+      await dispatch(refreshAccessToken()).unwrap();
+      const user = await dispatch(fetchCurrentUser()).unwrap();
+
+      return user;
+    } catch (error) {
+      setAccessToken(null);
+      return rejectWithValue(error);
+    }
+  },
+);
+
 // Logout
 export const logout = createAsyncThunk(
   "auth/logout",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await logoutUser();
-      return response;
+      return await logoutUser();
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || "Logout failed");
     } finally {
@@ -99,10 +114,12 @@ export const logout = createAsyncThunk(
 const authSlice = createSlice({
   name: "auth",
   initialState,
+
   reducers: {
     clearAuthError: (state) => {
       state.error = null;
     },
+
     resetAuth: (state) => {
       state.user = null;
       state.accessToken = null;
@@ -111,6 +128,7 @@ const authSlice = createSlice({
       setAccessToken(null);
     },
   },
+
   extraReducers: (builder) => {
     builder
       // Register
@@ -156,9 +174,32 @@ const authSlice = createSlice({
       })
 
       // Current user
+      .addCase(fetchCurrentUser.pending, (state) => {
+        state.error = null;
+      })
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isAuthenticated = true;
+      })
+      .addCase(fetchCurrentUser.rejected, (state) => {
+        state.user = null;
+        state.isAuthenticated = false;
+        state.accessToken = null;
+        setAccessToken(null);
+      })
+
+      // Initialize authentication
+      .addCase(initializeAuth.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isAuthenticated = true;
+        state.isInitialized = true;
+      })
+      .addCase(initializeAuth.rejected, (state) => {
+        state.user = null;
+        state.accessToken = null;
+        state.isAuthenticated = false;
+        state.isInitialized = true;
+        setAccessToken(null);
       })
 
       // Logout

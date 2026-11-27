@@ -7,7 +7,6 @@ export const requireTaskStatusPermission = asyncHandler(
   async (req, res, next) => {
     const { workspaceId, projectId, taskId } = req.params;
 
-    // const membership = req.workspaceMembership;
     const membership = req.workspaceMembership;
 
     // Managers and above can update any task status.

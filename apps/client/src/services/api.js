@@ -45,7 +45,7 @@ api.interceptors.request.use((config) => {
 });
 
 // Response interceptor
-// we are the sources and get the records of the insider implementation of the inclinational society management
+// we management
 api.interceptors.response.use(
   (response) => response,
 

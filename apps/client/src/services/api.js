@@ -45,7 +45,6 @@ api.interceptors.request.use((config) => {
 });
 
 // Response interceptor
-// we management
 api.interceptors.response.use(
   (response) => response,
 

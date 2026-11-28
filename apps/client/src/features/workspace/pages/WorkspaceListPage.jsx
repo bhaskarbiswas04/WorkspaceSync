@@ -1,5 +1,6 @@
 
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { FolderKanban, Plus, Users } from "lucide-react";
 
 import { useAppDispatch } from "../../../hooks/useAppDispatch";
@@ -8,6 +9,7 @@ import { useAppSelector } from "../../../hooks/useAppSelector";
 import { fetchMyWorkspaces } from "../workspaceSlice";
 
 function WorkspaceListPage() {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const { workspaces, isLoading, error } = useAppSelector(
@@ -21,7 +23,6 @@ function WorkspaceListPage() {
   return (
     <div className="min-h-screen bg-slate-50 px-6 py-10 sm:px-10">
       <div className="mx-auto max-w-6xl">
-
         {/* Header */}
         <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
           <div>
@@ -40,9 +41,7 @@ function WorkspaceListPage() {
 
           <button
             type="button"
-            onClick={() => {
-              // We'll connect workspace creation next.
-            }}
+            onClick={() => navigate("/workspaces/create")}
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-3 font-medium text-white shadow-sm transition hover:bg-indigo-700"
           >
             <Plus size={19} />
@@ -83,16 +82,14 @@ function WorkspaceListPage() {
             </h2>
 
             <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500">
-              Create your first workspace to start organizing projects,
-              managing tasks, and collaborating with your team.
+              Create your first workspace to start organizing projects, managing
+              tasks, and collaborating with your team.
             </p>
 
             <button
               type="button"
               className="mt-6 inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-3 font-medium text-white hover:bg-indigo-700"
-              onClick={() => {
-                // We'll connect workspace creation next.
-              }}
+              onClick={() => navigate("/workspaces/create")}
             >
               <Plus size={18} />
               Create your first workspace

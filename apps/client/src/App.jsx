@@ -8,6 +8,7 @@ import { setAuthenticationFailureHandler } from "./services/api";
 import LoginPage from "./features/auth/pages/LoginPage";
 import RegisterPage from "./features/auth/pages/RegisterPage";
 import WorkspaceListPage from "./features/workspace/pages/WorkspaceListPage";
+import CreateWorkspacePage from "./features/workspace/pages/CreateWorkspacePage";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 import PublicRoute from "./routes/PublicRoute";
@@ -37,14 +38,12 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Route>
-
       <Route element={<ProtectedRoute />}>
         {/* <Route path="/dashboard" element={<DashboardPlaceholder />} /> */}
         <Route path="/dashboard" element={<WorkspaceListPage />} />
+        <Route path="/workspaces/create" element={<CreateWorkspacePage />} />
       </Route>
-
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
-      //we are the inclinational
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

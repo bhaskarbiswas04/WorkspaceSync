@@ -44,7 +44,7 @@ function App() {
       </Route>
 
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
-      //we are the inclinational society an get the records of the insider
+      //we are the inclinational
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

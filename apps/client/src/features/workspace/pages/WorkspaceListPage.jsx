@@ -134,10 +134,8 @@ function WorkspaceListPage() {
 
                     <button
                       type="button"
-                      className="text-sm font-semibold text-indigo-600 transition group-hover:text-indigo-700"
-                      onClick={() => {
-                        // Workspace selection will be implemented next.
-                      }}
+                      className="text-sm font-semibold text-indigo-600 transition cursor-pointer group-hover:text-indigo-700"
+                      onClick={() => navigate(`/workspaces/${workspace._id}`)}
                     >
                       Open Workspace →
                     </button>

@@ -9,6 +9,7 @@ import LoginPage from "./features/auth/pages/LoginPage";
 import RegisterPage from "./features/auth/pages/RegisterPage";
 import WorkspaceListPage from "./features/workspace/pages/WorkspaceListPage";
 import CreateWorkspacePage from "./features/workspace/pages/CreateWorkspacePage";
+import WorkspaceDashboardPage from "./features/workspace/pages/WorkspaceDashboardPage";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 import PublicRoute from "./routes/PublicRoute";
@@ -42,6 +43,7 @@ function App() {
         {/* <Route path="/dashboard" element={<DashboardPlaceholder />} /> */}
         <Route path="/dashboard" element={<WorkspaceListPage />} />
         <Route path="/workspaces/create" element={<CreateWorkspacePage />} />
+        <Route path="/workspaces/:workspaceId" element={<WorkspaceDashboardPage />} />
       </Route>
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
       <Route path="*" element={<NotFoundPage />} />

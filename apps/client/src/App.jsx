@@ -7,13 +7,14 @@ import { setAuthenticationFailureHandler } from "./services/api";
 
 import LoginPage from "./features/auth/pages/LoginPage";
 import RegisterPage from "./features/auth/pages/RegisterPage";
+import WorkspaceListPage from "./features/workspace/pages/WorkspaceListPage";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 import PublicRoute from "./routes/PublicRoute";
 
-function DashboardPlaceholder() {
-  return <div className="p-10">Dashboard implementation coming next.</div>;
-}
+// function DashboardPlaceholder() {
+//   return <div className="p-10">Dashboard implementation coming next.</div>;
+// }
 
 function NotFoundPage() {
   return <div className="p-10">404 - Page Not Found</div>;
@@ -38,10 +39,12 @@ function App() {
       </Route>
 
       <Route element={<ProtectedRoute />}>
-        <Route path="/dashboard" element={<DashboardPlaceholder />} />
+        {/* <Route path="/dashboard" element={<DashboardPlaceholder />} /> */}
+        <Route path="/dashboard" element={<WorkspaceListPage />} />
       </Route>
 
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
+      //we are the inclinational society an get the records of the insider
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
